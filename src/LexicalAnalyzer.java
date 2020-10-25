@@ -38,6 +38,11 @@ public class LexicalAnalyzer {
         return curToken;
     }
 
+    public Token getNextToken() throws ParsingException {
+        nextToken();
+        return curToken;
+    }
+
     public void nextToken() throws ParsingException {
         while (Character.isWhitespace(curChar)) {
             nextChar();
