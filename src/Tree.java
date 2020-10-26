@@ -1,16 +1,29 @@
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 public class Tree {
-    public String getNode() {
-        return node;
+    private String genGraphId(int id) {
+        return "V" + id;
     }
 
-//    public boolean eval(Map<Character, Boolean> variableValues) {
-//        return false;
-//    }
+    private String getFullVertexRepresentation() {
+        return graphId + "[label=\"" + node + "\"];";
+    }
+
+    private String getEdge(String fromGraphId, String toGraphId) {
+        return fromGraphId + " -> " + toGraphId;
+    }
+
+    public void getGraph(List<String> vertexes, List<String> edges) {
+        graphId = genGraphId(vertexes.size());
+        vertexes.add(getFullVertexRepresentation());
+        for (Tree ch : children) {
+            ch.getGraph(vertexes, edges);
+        }
+        for (Tree ch : children) {
+            edges.add(getEdge(graphId, ch.graphId));
+        }
+    }
 
     @Override
     public String toString() {
@@ -27,10 +40,7 @@ public class Tree {
         }
     }
 
-    public List<Tree> getChildren() {
-        return children;
-    }
-
+    private String graphId;
     private final String node;
     private final List<Tree> children;
 

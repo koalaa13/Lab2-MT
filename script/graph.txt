@@ -1,0 +1,34 @@
+digraph G {
+	V0[label="S"];
+	V1[label="E"];
+	V2[label="O"];
+	V3[label="F"];
+	V4[label="a"];
+	V5[label="O`"];
+	V6[label="EPS"];
+	V7[label="E`"];
+	V8[label="|"];
+	V9[label="O"];
+	V10[label="F"];
+	V11[label="b"];
+	V12[label="O`"];
+	V13[label="EPS"];
+	V14[label="E`"];
+	V15[label="EPS"];
+
+	V3 -> V4
+	V5 -> V6
+	V2 -> V3
+	V2 -> V5
+	V10 -> V11
+	V12 -> V13
+	V9 -> V10
+	V9 -> V12
+	V14 -> V15
+	V7 -> V8
+	V7 -> V9
+	V7 -> V14
+	V1 -> V2
+	V1 -> V7
+	V0 -> V1
+}
