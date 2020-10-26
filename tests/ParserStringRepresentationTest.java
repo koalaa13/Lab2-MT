@@ -5,7 +5,7 @@ import java.io.InputStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ParserStringRepresentaionTest {
+class ParserStringRepresentationTest {
     private final static Parser parser = new Parser();
 
     private InputStream getInputStreamFromString(final String str) {
