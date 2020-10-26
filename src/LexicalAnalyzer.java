@@ -22,11 +22,13 @@ public class LexicalAnalyzer {
     }
 
     private void nextChar() throws ParsingException {
-        curPos++;
         try {
             curChar = is.read();
         } catch (IOException e) {
             throw new ParsingException(e.getMessage(), curPos);
+        }
+        if (curChar != -1) {
+            curPos++;
         }
     }
 

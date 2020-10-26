@@ -64,6 +64,10 @@ public class Parser {
     public Tree parse(final InputStream is) throws ParsingException {
         lex = new LexicalAnalyzer(is);
         lex.nextToken();
-        return S();
+        Tree res = S();
+        if (lex.getCurToken() != Token.END) {
+            throw new ParsingException("Incorrect expression", lex.getCurPos());
+        }
+        return res;
     }
 }
