@@ -79,4 +79,20 @@ class ParserStringRepresentationTest {
         final String incorrectSymbols = "a&b{c}";
         assertThrows(ParsingException.class, () -> parser.parse(getInputStreamFromString(incorrectSymbols)));
     }
+
+    @Test
+    void multiNegate() {
+        final String doubleNegate = "!!a";
+        assertThrows(ParsingException.class, () -> parser.parse(getInputStreamFromString(doubleNegate)));
+
+        final String tripleNegate = "!!!a";
+        assertThrows(ParsingException.class, () -> parser.parse(getInputStreamFromString(tripleNegate)));
+
+        final String hardTest = "!(!a|b&!c)";
+        try {
+            assertEquals(hardTest, parser.parse(getInputStreamFromString(hardTest)).toString());
+        } catch (ParsingException e) {
+            fail();
+        }
+    }
 }

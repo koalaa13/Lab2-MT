@@ -1,0 +1,42 @@
+bad grammar:
+S -> EPS
+S -> E
+E -> E|O
+E -> O
+E -> E^O
+O -> O&F
+O -> F
+F -> !F
+F -> n
+F -> (E)
+
+
+good grammar:
+S -> EPS
+S -> E
+E -> OE`
+E` -> EPS
+E` -> |OE`
+E` -> ^OE`
+O -> FO`
+O` -> EPS
+O` -> &FO`
+F -> !F
+F -> n
+F -> (E)
+
+grammar after modification:
+S -> EPS
+S -> E
+E -> OE`
+E` -> EPS
+E` -> |OE`
+E` -> ^OE`
+O -> FO`
+O` -> EPS
+O` -> &FO`
+F -> !F`
+F -> n
+F -> (E)
+F` -> n
+F` -> (E)
